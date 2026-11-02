@@ -55,7 +55,8 @@ arquivo não funciona em outro computador).
 - Go 1.24, **só biblioteca padrão** (chamadas do Windows por `syscall`: winspool, gdi32, crypt32).
 - `go test ./...` roda em qualquer sistema (as partes do Windows têm versão vazia fora dele).
 - `scripts/compilar.sh 1.0.0 https://servidor` gera `dist/cqrprint.exe`.
-- Versão: criar a tag `v1.0.0` publica o `.exe` em *Releases* (GitHub Actions). O servidor padrão
+- Versão: criar a tag `v1.0.0` (pelo git ou no site, em *Releases → Draft a new release*, tag nova
+  a partir do `main`) publica o `.exe` em *Releases* (GitHub Actions). O servidor padrão
   da instalação vem da variável `CQR_SERVIDOR_PADRAO` do repositório (nada fixo no código).
 - **Falta:** assinatura digital do `.exe` (certificado, antes de ir para os clientes),
   atualização automática, teste nas impressoras de verdade (Zebra e Argox).
