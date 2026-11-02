@@ -17,7 +17,7 @@ Proposta e decisões: `docs/propostas/agente-de-impressao.md`; API: `docs/api.md
 ## Instalar (no computador da fábrica)
 
 1. Baixe o `cqrprint.exe` (última versão em *Releases*).
-2. Clique com o botão direito → **Executar como administrador**.
+2. Dê dois cliques e confirme o pedido de administrador do Windows (o programa pede sozinho).
 3. Responda: endereço do CQR System, **CNPJ**, **matrícula** e **senha** de um Supervisor ou
    Administrador, e o nome do computador.
 4. Pronto: o programa fica em `C:\Program Files\CQR Print`, roda como serviço (tarefa agendada do
@@ -27,6 +27,16 @@ Proposta e decisões: `docs/propostas/agente-de-impressao.md`; API: `docs/api.md
 
 O computador aparece no Desk em **Configurações → Aparelhos** como "Agente de impressão"; revogar
 ali desliga o agente.
+
+**Antivírus:** enquanto o `.exe` não tiver assinatura digital, o Windows pode avisar "editor
+desconhecido" (SmartScreen: *Mais informações → Executar assim mesmo*) e o Microsoft Defender pode
+pôr o arquivo em quarentena por engano (falso positivo, comum em programa novo sem assinatura que
+se instala como tarefa do sistema). Para liberar num computador: *Segurança do Windows → Proteção
+contra vírus e ameaças → Histórico de proteção → o item do cqrprint.exe → Permitir no dispositivo*.
+Cada versão nova pode ser enviada à Microsoft como falso positivo
+(https://www.microsoft.com/wdsi/filesubmission). O `.exe` leva nome, empresa, versão e descrição
+(Propriedades → Detalhes) e o manifesto que pede administrador (`windows/recursos.sh`), o que reduz
+os alarmes; a solução definitiva é a assinatura digital.
 
 **Atenção:** como roda como SYSTEM, o CQR Print enxerga as impressoras **instaladas no computador**
 (para todos os usuários). Impressora conectada só no perfil de um usuário pode não aparecer.
