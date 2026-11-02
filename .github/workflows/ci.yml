@@ -5,6 +5,14 @@ on:
     branches: [main]
     tags: ['v*']
   pull_request:
+  # Versão criada no site do GitHub (Releases → Draft a new release).
+  release:
+    types: [published]
+
+# Tag e versão criadas juntas disparam duas vezes: uma de cada vez.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: read
