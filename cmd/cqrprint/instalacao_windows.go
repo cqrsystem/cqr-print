@@ -10,6 +10,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"strings"
+	"time"
 	"unicode/utf16"
 )
 
@@ -38,6 +39,7 @@ func copiarPrograma() (string, error) {
 	}
 	// Atualização: para a tarefa antes de trocar o arquivo.
 	_ = exec.Command("schtasks", "/End", "/TN", nomeTarefa).Run()
+	time.Sleep(time.Second)
 	origem, err := os.Open(atual)
 	if err != nil {
 		return "", err
@@ -53,8 +55,8 @@ func copiarPrograma() (string, error) {
 		return "", err
 	}
 	saida.Close()
-	if err := os.Rename(tmp, destino); err != nil {
-		return "", fmt.Errorf("não trocou o programa (ele está aberto?): %w", err)
+	if err := trocarArquivo(tmp, destino); err != nil {
+		return "", fmt.Errorf("não trocou o programa (feche o CQR Print e tente de novo): %w", err)
 	}
 	return destino, nil
 }

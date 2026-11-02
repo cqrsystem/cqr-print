@@ -124,6 +124,7 @@ func ativar() (*config.Config, error) {
 }
 
 func executar() error {
+	limparAntigo()
 	registro.Iniciar(config.Pasta(), true)
 	cfg, err := config.Carregar()
 	if err != nil {
